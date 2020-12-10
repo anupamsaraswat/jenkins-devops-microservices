@@ -24,14 +24,18 @@ pipeline {
 		}
 		stage('Docker build'){
 			steps{
-				dockerImage = docker.build("anupamsaraswat/currency-exchange-devops:${env.BUILD_TAG}")
+				script{
+				 dockerImage = docker.build("anupamsaraswat/currency-exchange-devops:${env.BUILD_TAG}")
+				}
 			}
 		}
 		stage('Docker Push'){
 			steps{
-				docker.withRegistry('', 'docker'){
-					dockerImage.push();
-					dockerImage.push('latest');
+				script{
+					docker.withRegistry('', 'docker'){
+						dockerImage.push();
+						dockerImage.push('latest');
+				    }
 				}
 			}
 		}
