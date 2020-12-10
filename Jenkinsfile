@@ -23,12 +23,12 @@ pipeline {
 			}
 		}
 		stage('Docker build'){
-			script{
+			steps{
 				dockerImage = docker.build("anupamsaraswat/currency-exchange-devops:${env.BUILD_TAG}")
 			}
 		}
 		stage('Docker Push'){
-			script{
+			steps{
 				docker.withRegistry('', 'docker'){
 					dockerImage.push();
 					dockerImage.push('latest');
