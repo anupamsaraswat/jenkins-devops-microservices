@@ -170,7 +170,7 @@
 					<argLine>${jacoco.utAgentConfig}</argLine>
 					<excludes>
 						<!--<exclude>**/*ApplicationTests.java</exclude> -->
-						<exclude>**/RunCucumberIntegrationTestCase.java</exclude>
+						<exclude>**/*.java</exclude>
 					</excludes>
 					<properties>
 						<!-- add SonarQube's JaCoCo listener to enable -->
